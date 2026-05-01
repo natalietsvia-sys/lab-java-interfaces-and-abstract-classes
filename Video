@@ -1,0 +1,74 @@
+package week2;
+
+abstract class Video {
+    protected String title;
+    protected int duration;
+
+    public Video(String title, int duration) {
+        this.title = title;
+        this.duration = duration;
+    }
+
+    public abstract String getInfo();
+}
+
+class TvSeries extends Video {
+    private int episodes;
+
+    public TvSeries(String title, int duration, int episodes) {
+        super(title, duration);
+        this.episodes = episodes;
+    }
+
+    @Override
+    public String getInfo() {
+        return "TV Series: " + title +
+                "\nDuration: " + duration + " minutes" +
+                "\nEpisodes: " + episodes;
+    }
+}
+
+class Movie extends Video {
+    private double rating;
+
+    public Movie(String title, int duration, double rating) {
+        super(title, duration);
+        this.rating = rating;
+    }
+
+    @Override
+    public String getInfo() {
+        return "Movie: " + title +
+                "\nDuration: " + duration + " minutes" +
+                "\nRating: " + rating;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Movie movie1 = new Movie("Interstellar", 169, 8.7);
+        Movie movie2 = new Movie("Inception", 148, 8.8);
+        Movie movie3 = new Movie("The Matrix", 136, 8.7);
+
+        TvSeries series1 = new TvSeries("Breaking Bad", 2925, 62);
+        TvSeries series2 = new TvSeries("Stranger Things", 2040, 34);
+        TvSeries series3 = new TvSeries("Game of Thrones", 4220, 73);
+
+        System.out.println(movie1.getInfo());
+        System.out.println();
+
+        System.out.println(movie2.getInfo());
+        System.out.println();
+
+        System.out.println(movie3.getInfo());
+        System.out.println();
+
+        System.out.println(series1.getInfo());
+        System.out.println();
+
+        System.out.println(series2.getInfo());
+        System.out.println();
+
+        System.out.println(series3.getInfo());
+    }
+}
